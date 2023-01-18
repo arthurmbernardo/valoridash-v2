@@ -1,0 +1,34 @@
+body{
+  background-color: #102C28;
+  color: white;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url("../public/images/fundo2.jpg");
+  background-size: cover;
+}
+.tela_login{
+
+}
+.container_login{
+  width: 325px;
+  color: black;
+  height: 600px;
+  padding:50px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 5px 15px rgba(0,0,0,5);
+  border-radius: 20px;
+  text-align: center;
+}
+.form_image{
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right:15px;
+  display: flex;
+  align-self: baseline;
+  background: url("../public/images/log6.png");
+  background-size: cover;
+  width: 305px;
+  height: 305px;    
+}
