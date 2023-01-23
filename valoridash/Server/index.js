@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
+const session = require('express-session')
 
 // Conexão com o banco de dados
 const db = mysql.createPool({
@@ -16,16 +17,6 @@ app.use(cors());
 // Usado para transformar a requisição para formato json.
 // Sem isso, a requisição é enviada para o servidor mas não conseguimos tirar as informações dela
 app.use(express.json());
-
-
-app.get('/', (req, res) => {
-    let sql = "SELECT * FROM users"
-    db.query(sql, (res, err) => {
-        console.log(res);
-    })
-})
-
-
 
 // Método post para criar um novo usuário
 app.post('/register', (req, res) => {
@@ -43,6 +34,32 @@ app.post('/register', (req, res) => {
     })
 });
 
+
+// Método post para logar um novo usuário
+app.post('/login', (req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+
+    // comando sql para inserção de novos usuários na tabela
+    let sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
+
+    // consulta sql com os dados da requisição
+    db.query(sql, [email, password], (err, res, fields) => {
+        if(err) throw err;
+        if(res.length > 0) {
+            console.log("Você está logado!");
+        } else {
+            console.log("Não foi possível fazer o login!");      
+        }
+    })
+})
+
+app.get('/home', (req, res) => {
+    if(authenticated = false) {
+        
+    }
+})
+
 app.listen(3001, () => {
-    console.log("Rodando o server")
+    console.log("Rodando o server");
 });
