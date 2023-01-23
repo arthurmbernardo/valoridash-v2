@@ -1,14 +1,15 @@
 import './style.css';
-import { useState } from 'react'
-import Axios from 'axios'
+import { useState } from 'react';
+import Axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
 
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
+        logged: false,
         email: "",
         password: "",
-        name: "",
     });
 
     // Função que lida com os dados do input
@@ -16,26 +17,38 @@ function Login() {
     // "[e.target.name]:e.target.value" procura o atributo com o mesmo nome do input e troca o valor
     const handleInput = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
-        console.log(user)
-    }
+    };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // Envia uma requisição para a url com os dados do user
         Axios.post('http://localhost:3001/login', {
             email: user.email,
-            password: user.password,
-            name: user.name,
+            password: user.password
         }).then((response) => {
-            console.log(response)
+            console.log(response);           
         })
-    }
+    };
 
-    return (        
+    const handleSubmit2 = async () => {
+        try {
+            const res = await Axios.post('http://localhost:3001/login', {
+                email: user.email,
+                password: user.password
+            })
+            const token = res.data;
+            localStorage.clear();
+            localStorage.setItem('user-token', token);
+            console.log(token);
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    return (
         <div className="login">
             <div className="container_login">
                 <h2>BEM VINDO AO VALORI DASH</h2>
-                <p>Nome:</p>
-                <input type="text" name="name" placeholder="Nome" value={user.name} onChange={handleInput} required />
                 <p>E-mail:</p>
                 <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
                 <p>Senha:</p>

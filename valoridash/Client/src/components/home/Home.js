@@ -1,8 +1,8 @@
 import './style.css'
-import Header from '../Header/Header';
+import Header from '../header/Header';
+
 
 function Home() {
-
     return (
         <div>
             <Header />

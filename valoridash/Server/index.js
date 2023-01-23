@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
-const session = require('express-session')
 
 // Conexão com o banco de dados
 const db = mysql.createPool({
@@ -25,39 +24,32 @@ app.post('/register', (req, res) => {
     const { password } = req.body;
     const { name } = req.body;
 
-    // comando sql para inserção de novos usuários na tabela
+    // Comando sql para inserção de novos usuários na tabela
     let sql = "INSERT INTO users (email, password, name) VALUES (?, ?, ?)";
 
-    // consulta sql com os dados da requisição
+    // Consulta sql com os dados da requisição
     db.query(sql, [email, password, name], (err, res) => {
         console.log(err);
     })
 });
-
 
 // Método post para logar um novo usuário
 app.post('/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    // comando sql para inserção de novos usuários na tabela
+    // Comando sql para inserção de novos usuários na tabela
     let sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
 
-    // consulta sql com os dados da requisição
+    // Consulta sql com os dados da requisição
     db.query(sql, [email, password], (err, res, fields) => {
-        if(err) throw err;
-        if(res.length > 0) {
+        if (err) throw err;
+        if (res.length > 0) {
             console.log("Você está logado!");
         } else {
-            console.log("Não foi possível fazer o login!");      
+            console.log("Não foi possível fazer o login!");
         }
     })
-})
-
-app.get('/home', (req, res) => {
-    if(authenticated = false) {
-        
-    }
 })
 
 app.listen(3001, () => {
