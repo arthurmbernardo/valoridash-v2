@@ -1,11 +1,14 @@
-import './style.css'
+import './Home.css'
 import Header from '../header/Header';
+
+
 
 
 function Home() {
     return (
         <div>
             <Header />
+            <button>Sair</button>
             <div className='dashboard'>
                 <div className="texto">
                     <h1>BEM VINDO AO VALORI DASH</h1>
