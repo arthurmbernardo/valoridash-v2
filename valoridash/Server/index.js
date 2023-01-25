@@ -3,6 +3,8 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 const crypto = require("crypto");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 // Conexão com o banco de dados
 const db = mysql.createPool({
@@ -24,22 +26,24 @@ app.post('/register', (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
 
-    const SQL = 'SELECT * FROM users WHERE email = ? AND password = ?';
-
-    db.query(SQL, [email, password], (err, result, fields) => {
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
         if (err) {
             res.send(err);
-        }
-        if (result.length <= 0) {
-            db.query("INSERT INTO users (email, password, name) VALUES (?, ?, ?)", [email, password, name], (err, result, fields) => {
-                if(err) {
-                    res.send(err);
-                }
-                res.send({ msg: "Novo usuário cadastrado"})
-
-            })
         } else {
-            res.send({ msg: "Usuário já cadastrado", status: false });
+            if (result.length > 0) {
+                res.send({ msg: "Usuário já cadastrado." })
+            } else {
+                bcrypt.hash(password, saltRounds, (errs, hash) => {
+                    db.query(SQLInsert, [name, email, hash], (erro, results) => {
+                        if (erro) {
+                            res.send(erro);
+                        }
+                        res.send({ msg: 'Novo usuário cadastrado.' });
+                        console.log("Cadastro realizado com sucesso");
+                    })
+                })
+                const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+            }
         }
     })
 });
@@ -49,18 +53,22 @@ app.post('/login', (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
 
-    // Comando sql para inserção de novos usuários na tabela
-    const SQL = 'SELECT * FROM users WHERE email = ? AND password = ?';
-
     // Consulta sql com os dados da requisição
-    db.query(SQL, [email, password], (err, result, fields) => {
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
         if (err) {
             res.send(err);
         }
         if (result.length > 0) {
-            console.log("Você está logado!");
-            res.send({ msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex') });
+            bcrypt.compare(password, result[0].password, (errs, results) => {
+                if (results) {
+                    res.send({ msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex') });
+                } else {
+                    console.log("Senha incorreta");
+                    res.send({ msg: "Senha incorreta.", status: false })
+                }                
+            })            
         } else {
+            console.log("Usuário não cadastrado.")
             res.send({ msg: "Usuário não encontrado", status: false });
         }
     })

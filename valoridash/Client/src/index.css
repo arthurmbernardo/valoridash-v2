@@ -1,8 +1,15 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Urbane';
+}
+
+/* Importação das fontes da valori */
 @font-face {
   font-family: 'Urbane';
   src: url(../public/fonts/Urbane-DemiBold.ttf) format('truetype');
 }
-
 @font-face {
   font-family: 'UrbaneRegular';
   src: url(../public/fonts/Urbane-Medium.ttf);
@@ -10,23 +17,12 @@
 
 /* Animação de transição ao carregar a página */
 @keyframes transitionIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+  from{
+      opacity: 0;
+      transform: translateY(10px);
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  to{
+      opacity: 1;
+      transform: translateY(0);
   }
-}
-
-body {
-  margin: 0px;
-  background-color: #102C28;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

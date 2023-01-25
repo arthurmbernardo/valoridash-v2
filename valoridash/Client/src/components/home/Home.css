@@ -1,5 +1,3 @@
-
-/* Classe do body da tela dashboards */
 .dashboard{
     background-color: #102C28;
     color: white;
@@ -7,10 +5,10 @@
     font-family: 'Urbane';
 }
 
-/* Classe da section de texto na tela dashboards - Usei assim pra poder mudar a fonte, animação etc */
 .texto{
     animation: transitionIn 2s;
-    padding-top: 200px;
+    margin-top: 120px;
+    margin-bottom: 120px;
     text-align: center;
     font-family: 'UrbaneRegular';
 }

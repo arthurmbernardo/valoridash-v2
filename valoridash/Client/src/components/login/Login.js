@@ -1,7 +1,7 @@
 import './Login.css';
 import { useState } from 'react';
 import Axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -16,6 +16,10 @@ function Login() {
         setUser({ ...user, [e.target.name]: e.target.value })
     };
 
+    const preventSubmit = (e) => {
+        e.preventDefault();
+    }
+
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
@@ -23,7 +27,7 @@ function Login() {
             email: user.email,
             password: user.password
         }).then((response) => {
-            if(response.data.status) {
+            if (response.data.status) {
                 const { token } = response.data;
                 localStorage.setItem('token', token);
                 console.log(response);
@@ -36,13 +40,15 @@ function Login() {
         <div className="login">
             <div className="container_login">
                 <h2>BEM VINDO AO VALORI DASH</h2>
-                <p>E-mail:</p>
-                <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
-                <p>Senha:</p>
-                <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
-                <br /><br />
-                <input type="submit" defaultValue="Entrar" onClick={handleSubmit} />
-                <div className="form_image" />
+                <form method="post" onSubmit={preventSubmit}>
+                    <p>E-mail:</p>
+                    <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
+                    <p>Senha:</p>
+                    <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
+                    <br/><br />
+                    <input type="submit" defaultValue="Entrar" onClick={handleSubmit} />
+                </form>
+                <div className="form_image"/>
             </div>
         </div>
     )

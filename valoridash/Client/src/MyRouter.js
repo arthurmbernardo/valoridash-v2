@@ -6,24 +6,16 @@ import PrivateRoute from './PrivateRoute';
 
 
 function MyRouter() {
-
-    // const checkUserToken = () => {
-    //     const userToken = localStorage.getItem('user-token');
-    //     if (!userToken || userToken === 'undefined') {
-    //         setIsLoggedIn(false);
-    //     } else {
-    //         setIsLoggedIn(true);
-    //     }
-    // }
-
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={
                     <PrivateRoute><Home /></PrivateRoute>
                 } />
+                <Route path='/register' element={
+                    <PrivateRoute><Register /></PrivateRoute>
+                } />                
                 <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
             </Routes>
         </BrowserRouter>
     )
