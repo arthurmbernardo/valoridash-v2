@@ -5,7 +5,7 @@ import Register from './components/register/Register';
 import PrivateRoute from './PrivateRoute';
 
 
-function MyRouter() {
+function MyRouter() {    
     return (
         <BrowserRouter>
             <Routes>
@@ -14,7 +14,7 @@ function MyRouter() {
                 } />
                 <Route path='/register' element={
                     <PrivateRoute><Register /></PrivateRoute>
-                } />                
+                } />
                 <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>

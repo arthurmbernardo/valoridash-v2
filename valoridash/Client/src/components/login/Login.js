@@ -2,9 +2,13 @@ import './Login.css';
 import { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Index from '../../index';
+
 
 function Login() {
 
+    var token = null;
+    var msg = null;
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         email: "",
@@ -13,7 +17,7 @@ function Login() {
 
     // Função que lida com os dados do input "...user" mantém o estado inicial "[e.target.name]:e.target.value" procura o atributo com o mesmo nome do input e troca o valor
     const handleInput = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value });
     };
 
     const preventSubmit = (e) => {
@@ -27,11 +31,15 @@ function Login() {
             email: user.email,
             password: user.password
         }).then((response) => {
-            if (response.data.status) {
-                const { token } = response.data;
+            if (response.data.status === true) {
+                token = response.data.token;
                 localStorage.setItem('token', token);
-                console.log(response);
+                alert('Login realizado com sucesso!');
                 navigate('/');
+            } else if (response.data.status !== true) {
+                msg = response.data.msg;
+                if (msg === 'wrongPassword') alert('Senha incorreta. Verifique seus dados e tente novamente.');
+                if (msg === 'wrongEmail') alert('Usuário não encontrado. Verifique seus dados e tente novamente.');
             }
         })
     };
@@ -45,10 +53,10 @@ function Login() {
                     <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
                     <p>Senha:</p>
                     <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
-                    <br/><br />
-                    <input type="submit" defaultValue="Entrar" onClick={handleSubmit} />
+                    <br /><br />
+                    <button onClick={handleSubmit}>Entrar</button>                    
                 </form>
-                <div className="form_image"/>
+                <div className="form_image" />
             </div>
         </div>
     )

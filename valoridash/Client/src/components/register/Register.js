@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Register() {
 
+    var msg = null;
+
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         name: "",
@@ -28,13 +30,20 @@ function Register() {
             password: user.password,
             name: user.name
         }).then((response) => {
-            console.log(response);
+            msg = response.data.msg;
+            if (msg === 'invalidEmail') alert('E-mail inválido. Por favor insira um valor válido.');
+            if (msg === 'invalidPassword') alert('Senha inválida. Por favor insira uma senha com pelo menos 8 caracteres.');
+            if (msg === 'userAlreadyRegistered') alert('Usuário já está registrado.');
+            if (msg === 'newUserAdded') {
+                alert('Novo usuário cadastrado.');
+                navigate('/login');
+            }        
         })
     };
 
     return (
-        <div className="login">
-            <div className="container_login">
+        <div className="register">
+            <div className="container_register">
                 <h2>Criar novo usuário</h2>
                 <form method='post' onSubmit={preventSubmit}>
                     <p>Nome:</p>
@@ -44,7 +53,8 @@ function Register() {
                     <p>Senha:</p>
                     <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
                     <br /><br />
-                    <input type="submit" defaultValue="Entrar" onClick={handleSubmit} />
+                    <button onClick={handleSubmit}>Cadastrar</button>
+                    <button onClick={(e) => {navigate('/')}}>Voltar</button>
                 </form>
                 <div className="form_image" />
             </div>

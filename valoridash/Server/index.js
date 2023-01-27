@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
-const crypto = require("crypto");
+const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -26,26 +26,34 @@ app.post('/register', (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
 
-    db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
-        if (err) {
-            res.send(err);
+    if (email.length <= 15) {
+        res.send({ msg: "invalidEmail" });
+    } else {
+        if (password.length < 8) {
+            res.send({ msg: "invalidPassword" });
         } else {
-            if (result.length > 0) {
-                res.send({ msg: "Usuário já cadastrado." })
-            } else {
-                bcrypt.hash(password, saltRounds, (errs, hash) => {
-                    db.query(SQLInsert, [name, email, hash], (erro, results) => {
-                        if (erro) {
-                            res.send(erro);
-                        }
-                        res.send({ msg: 'Novo usuário cadastrado.' });
-                        console.log("Cadastro realizado com sucesso");
-                    })
-                })
-                const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-            }
+            db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    if (result.length > 0) {
+                        res.send({ msg: "userAlreadyRegistered" });
+                    } else {
+                        bcrypt.hash(password, saltRounds, (errs, hash) => {
+                            db.query(SQLInsert, [name, email, hash], (erro, results) => {
+                                if (erro) {
+                                    res.send(erro);
+                                }
+                                res.send({ msg: 'newUserAdded' });
+                                console.log("Cadastro realizado com sucesso");
+                            })
+                        })
+                        const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+                    }
+                }
+            })
         }
-    })
+    }
 });
 
 // Método post para logar um novo usuário
@@ -63,13 +71,11 @@ app.post('/login', (req, res) => {
                 if (results) {
                     res.send({ msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex') });
                 } else {
-                    console.log("Senha incorreta");
-                    res.send({ msg: "Senha incorreta.", status: false })
-                }                
-            })            
+                    res.send({ msg: 'wrongPassword', status: false });
+                }
+            })
         } else {
-            console.log("Usuário não cadastrado.")
-            res.send({ msg: "Usuário não encontrado", status: false });
+            res.send({ msg: 'wrongEmail', status: false });
         }
     })
 })
