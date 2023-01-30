@@ -2,11 +2,8 @@ import './Login.css';
 import { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Index from '../../index';
-
 
 function Login() {
-
     var token = null;
     var msg = null;
     // Objeto usuário, com um estado e um setEstado
@@ -22,7 +19,7 @@ function Login() {
 
     const preventSubmit = (e) => {
         e.preventDefault();
-    }
+    };
 
     const navigate = useNavigate();
     const handleSubmit = () => {

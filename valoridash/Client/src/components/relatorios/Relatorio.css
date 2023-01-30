@@ -1,0 +1,49 @@
+body {
+    background-color: #102C28;    
+}
+
+.relatoriosList {
+    margin: 24px, 0, 20px, 32px;
+    margin-top:24px;
+    margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ 
+}
+
+button {
+    font-family: 'Urbane';
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+    border: none;
+    margin-right: 24px;
+}
+
+button:hover, button:active {
+    color:#6e7070;
+}
+
+#iframeContainer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 48px;
+
+}
+
+#visibleIframeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 48px;
+
+}
+
+.displayAreaContainer newCanvasScrollbar droppableElement ui-droppable {
+    display: flex;
+    justify-content: center;
+}
