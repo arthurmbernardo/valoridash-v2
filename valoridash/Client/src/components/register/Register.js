@@ -12,7 +12,23 @@ function Register() {
         name: "",
         email: "",
         password: "",
+        departamento: "",
     });
+
+    // desse jeito, roda a cada renderização (F5)
+    // useEffect(() => {
+    //     console.log(user);
+    // });
+
+    // array de dependência que define o uso do useEffect sempre que user for modificado
+    // useEffect(() => {
+    //     console.log(user);
+    // }, [user]);
+
+    // desse jeito rada só uma vez
+    // useEffect(() => {
+    //     console.log(user);
+    // }, []);
 
     const preventSubmit = (e) => {
         e.preventDefault();
@@ -25,7 +41,7 @@ function Register() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://localhost:3001/register', {
+        Axios.post('http://192.168.45.161:3001/register', {
             email: user.email,
             password: user.password,
             name: user.name
@@ -36,7 +52,7 @@ function Register() {
             if (msg === 'userAlreadyRegistered') alert('Usuário já está registrado.');
             if (msg === 'newUserAdded') {
                 alert('Novo usuário cadastrado.');
-                navigate('/login');
+                navigate('/');
             }        
         })
     };

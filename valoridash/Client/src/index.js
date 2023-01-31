@@ -6,7 +6,7 @@ import MyRouter from './MyRouter';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MyRouter token="teste23" />
+    <MyRouter />
   </React.StrictMode>
 );
 

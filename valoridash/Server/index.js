@@ -26,32 +26,36 @@ app.post('/register', (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
 
-    if (email.length <= 15) {
-        res.send({ msg: "invalidEmail" });
+    if (!name) {
+        res.send({ msg: "nameInvalid" });
     } else {
-        if (password.length < 8) {
-            res.send({ msg: "invalidPassword" });
+        if (email.substring(email.length - 15, email.length) !== '@valoribank.com') {
+            res.send({ msg: "invalidEmail" });
         } else {
-            db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
-                if (err) {
-                    res.send(err);
-                } else {
-                    if (result.length > 0) {
-                        res.send({ msg: "userAlreadyRegistered" });
+            if (password.length < 8) {
+                res.send({ msg: "invalidPassword" });
+            } else {
+                db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
+                    if (err) {
+                        res.send(err);
                     } else {
-                        bcrypt.hash(password, saltRounds, (errs, hash) => {
-                            db.query(SQLInsert, [name, email, hash], (erro, results) => {
-                                if (erro) {
-                                    res.send(erro);
-                                }
-                                res.send({ msg: 'newUserAdded' });
-                                console.log("Cadastro realizado com sucesso");
+                        if (result.length > 0) {
+                            res.send({ msg: "userAlreadyRegistered" });
+                        } else {
+                            bcrypt.hash(password, saltRounds, (errs, hash) => {
+                                db.query(SQLInsert, [name, email, hash], (erro, results) => {
+                                    if (erro) {
+                                        res.send(erro);
+                                    }
+                                    res.send({ msg: 'newUserAdded' });
+                                    console.log("Cadastro realizado com sucesso");
+                                })
                             })
-                        })
-                        const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+                            const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+                        }
                     }
-                }
-            })
+                })
+            }
         }
     }
 });
