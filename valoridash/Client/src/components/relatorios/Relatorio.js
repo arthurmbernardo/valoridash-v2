@@ -1,29 +1,24 @@
 import Header from '../header/Header';
 import './Relatorio.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function Relatorio() {
 
-    const showFrame = () => {
-        const frame = document.getElementById('iframeContainer');
-        if (frame) {
-            document.getElementById('iframeContainer').id = 'visibleIframeContainer';
-        } else {
-            document.getElementById('visibleIframeContainer').id = 'iframeContainer';
-        }
-    };
+    const navigate = useNavigate();
 
     return (
         <div>
             <Header />
-            <div className='relatoriosList'>
-            <button className='relatorioButton' onClick={showFrame}>Volumetria Macro_V3</button>
-            <button className='relatorioButton' onClick={showFrame}>RGV_Comercial_V4</button>
-            <button className='relatorioButton' onClick={showFrame}>Indicadores Retenção_V1</button>
-            </div>
-
-            <div id='iframeContainer'>
-            <iframe title="Volumetria Macro_V2" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=a86cc15f-8b35-4b58-88df-38807ec14e40&autoAuth=true&ctid=0a42edab-afcd-48af-a0b9-5b78edb164da" frameborder="0" allowFullScreen></iframe>
+            <div className='departmentList'>
+                <button id='departmentButtonAtendimento' className='departmentButton' onClick={(e) => { navigate('/relatorios/atendimento') }}>Atendimento</button>
+                <button id='departmentButtonComercial' className='departmentButton' onClick={(e) => { navigate('/relatorios/comercial') }}>Comercial</button>
+                <button id='departmentButtonEstrategia' className='departmentButton' onClick={(e) => { navigate('/relatorios/estrategiaeprodutos') }}>Estratégia e Produtos</button>
+                <button id='departmentButtonFinanceiro' className='departmentButton' onClick={(e) => { navigate('/relatorios/financeiro') }}>Financeiro</button>
+                <button id='departmentButtonGeral' className='departmentButton' onClick={(e) => { navigate('/relatorios/geral') }}>Geral</button>
+                <button id='departmentButtonMarketing' className='departmentButton' onClick={(e) => { navigate('/relatorios/marketing') }}>Marketing</button>
+                <button id='departmentButtonOperacional' className='departmentButton' onClick={(e) => { navigate('/relatorios/operacional') }}>Operacional</button>
+                <button id='departmentButtonRH' className='departmentButton' onClick={(e) => { navigate('/relatorios/rh') }}>RH</button>
             </div>
         </div>
     )

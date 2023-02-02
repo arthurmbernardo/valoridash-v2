@@ -24,7 +24,7 @@ function Login() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://192.168.45.161:3001/login', {
+        Axios.post('http://192.168.45.187:3001/login', {
             email: user.email,
             password: user.password
         }).then((response) => {

@@ -41,7 +41,8 @@ button {
     font-family: 'Urbane';
     background-color: inherit;
     border: none;
-    color: black;
+    color: #4c4c4c;
     font-size: 20px;
+    margin-top: 20px;
 }
 

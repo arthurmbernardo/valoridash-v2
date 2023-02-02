@@ -25,6 +25,7 @@ app.post('/register', (req, res) => {
     const { name } = req.body;
     const { email } = req.body;
     const { password } = req.body;
+    const { department } = req.body;
 
     if (!name) {
         res.send({ msg: "nameInvalid" });
@@ -43,7 +44,7 @@ app.post('/register', (req, res) => {
                             res.send({ msg: "userAlreadyRegistered" });
                         } else {
                             bcrypt.hash(password, saltRounds, (errs, hash) => {
-                                db.query(SQLInsert, [name, email, hash], (erro, results) => {
+                                db.query(SQLInsert, [name, email, department, hash], (erro, results) => {
                                     if (erro) {
                                         res.send(erro);
                                     }
@@ -51,7 +52,7 @@ app.post('/register', (req, res) => {
                                     console.log("Cadastro realizado com sucesso");
                                 })
                             })
-                            const SQLInsert = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+                            const SQLInsert = 'INSERT INTO users (name, email, department, password) VALUES (?, ?, ?, ?)';
                         }
                     }
                 })

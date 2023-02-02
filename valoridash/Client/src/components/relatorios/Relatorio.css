@@ -2,7 +2,7 @@ body {
     background-color: #102C28;
 }
 
-.relatoriosList {
+.departmentList {
     margin: 24px, 0, 20px, 32px;
     margin-top: 24px;
     margin-left: 32px;
@@ -10,7 +10,17 @@ body {
     justify-content: space-evenly;
 }
 
-.relatorioButton {
+.invisibleDepartmentButton {
+    display: none;
+    font-family: 'Urbane';
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+
+.departmentButton {
+    display: block;
     font-family: 'Urbane';
     background-color: inherit;
     color: white;
@@ -21,15 +31,6 @@ body {
 button:hover,
 button:active {
     color: #6e7070;
-}
-
-#iframeContainer {
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 48px;
-
 }
 
 #visibleIframeContainer {
