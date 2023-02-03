@@ -26,7 +26,7 @@ function Register() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://192.168.45.187:3001/register', {
+        Axios.post('http://192.168.45.170:3001/register', {
             email: user.email,
             password: user.password,
             name: user.name,

@@ -12,15 +12,15 @@ import Operacional from './components/relatorios/Operacional';
 import RH from './components/relatorios/RH';
 import Relatorio from './components/relatorios/Relatorio';
 
+function MyRouter() {
 
-function MyRouter() {    
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={
                     <PrivateRoute><Home /></PrivateRoute>
                 } />
-                
+
                 <Route path='/register' element={
                     <PrivateRoute><Register /></PrivateRoute>
                 } />
@@ -33,10 +33,10 @@ function MyRouter() {
                 <Route path='/relatorios/atendimento' element={<Atendimento />} />
                 <Route path='/relatorios/comercial' element={<Comercial />} />
                 <Route path='/relatorios/estrategiaeprodutos' element={<Estrategia />} />
+                <Route path='/relatorios/financeiro' element={<Financeiro />} />
                 <Route path='/relatorios/marketing' element={<Marketing />} />
                 <Route path='/relatorios/operacional' element={<Operacional />} />
-                <Route path='relatorios/rh' element={<RH />} />
-
+                <Route path='/relatorios/rh' element={<RH />} />
 
             </Routes>
         </BrowserRouter>
