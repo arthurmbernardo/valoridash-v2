@@ -74,7 +74,8 @@ app.post('/login', (req, res) => {
         if (result.length > 0) {
             bcrypt.compare(password, result[0].password, (errs, results) => {
                 if (results) {
-                    res.send({ msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex') });
+                    res.send({
+                        msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex'), department: result[0].department });
                 } else {
                     res.send({ msg: 'wrongPassword', status: false });
                 }

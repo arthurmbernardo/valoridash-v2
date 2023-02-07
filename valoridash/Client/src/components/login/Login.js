@@ -2,18 +2,18 @@ import './Login.css';
 import { useState, React } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import  setUserToken, { setUserDepartment } from '../../userData';
 
 function Login() {
     var token = null;
     var msg = null;
+    var department = null;
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         email: "",
         password: "",
         department: "",
     });
-
-    const globalUserContext = React.createContext(user);
 
     // Função que lida com os dados do input "...user" mantém o estado inicial "[e.target.name]:e.target.value" procura o atributo com o mesmo nome do input e troca o valor
     const handleInput = (e) => {
@@ -27,13 +27,20 @@ function Login() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://192.168.45.170:3001/login', {
+        Axios.post('http://192.168.45.149:3001/login', {
             email: user.email,
             password: user.password
         }).then((response) => {
             if (response.data.status === true) {
                 token = response.data.token;
+                department = response.data.department;
+
+                setUserToken(token);
+                setUserDepartment(department);
+
                 localStorage.setItem('token', token);
+                localStorage.setItem('department', department);
+
                 alert('Login realizado com sucesso!');
                 navigate('/');
             } else {
