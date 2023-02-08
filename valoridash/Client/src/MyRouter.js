@@ -17,6 +17,8 @@ import PrivateRouteComercial from './components/PrivatesRouters/PrivateRouteCome
 import PrivateRouteEstrategia from './components/PrivatesRouters/PrivateRouteEstrategia';
 import PrivateRouteFinanceiro from './components/PrivatesRouters/PrivateRouteFinanceiro';
 import PrivateRouteMarketing from './components/PrivatesRouters/PrivateRouteMarketing';
+import PrivateRouteOperacional from './components/PrivatesRouters/PrivateRouteOperacional';
+import PrivateRouteRH from './components/PrivatesRouters/PrivateRouteRH';
 
 function MyRouter() {
 
@@ -58,9 +60,17 @@ function MyRouter() {
                     <PrivateRoute><PrivateRouteMarketing><Marketing /></PrivateRouteMarketing></PrivateRoute>
                 } />
 
-                <Route path='/relatorios/operacional' element={<Operacional />} />
-                <Route path='/relatorios/rh' element={<RH />} />
-                <Route path='/relatorios/geral' element={<Geral />} />
+                <Route path='/relatorios/operacional' element={
+                    <PrivateRoute><PrivateRouteOperacional><Operacional /></PrivateRouteOperacional></PrivateRoute>
+                } />
+
+                <Route path='/relatorios/rh' element={
+                    <PrivateRoute><PrivateRouteRH><RH /></PrivateRouteRH></PrivateRoute>
+                } />
+
+                <Route path='/relatorios/geral' element={
+                    <PrivateRoute><Geral /></PrivateRoute>
+                } />
 
             </Routes>
         </BrowserRouter>
