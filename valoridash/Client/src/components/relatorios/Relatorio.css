@@ -3,9 +3,7 @@ body {
 }
 
 .departmentList {
-    margin: 24px, 0, 20px, 32px;
     margin-top: 24px;
-    margin-left: 32px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -17,6 +15,14 @@ body {
     color: white;
     font-size: 20px;
     border: none;
+}
+
+.backButton {
+    color: white;
+    font-family: 'Urbane';
+    background-color: inherit;
+    border: none;
+    font-size: 20px;
 }
 
 .departmentButton {
