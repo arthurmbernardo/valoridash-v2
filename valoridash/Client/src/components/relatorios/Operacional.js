@@ -5,10 +5,12 @@ function Operacional() {
 
     const navigate = useNavigate();
 
-    return(
+    return (
         <div>
-            <Header /> 
-            <button onClick={ () => {navigate('/relatorios')} }>Voltar</button>           
+            <Header />
+            <div className="backButtonContainer">
+                <button class="backButton" onClick={() => { navigate('/relatorios') }}>Voltar</button>
+            </div>
         </div>
     )
 }

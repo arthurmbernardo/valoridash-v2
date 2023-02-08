@@ -17,6 +17,10 @@ body {
     border: none;
 }
 
+.backButtonContainer {
+    text-align: center;
+}
+
 .backButton {
     color: white;
     font-family: 'Urbane';

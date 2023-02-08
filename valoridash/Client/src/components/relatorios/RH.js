@@ -5,12 +5,14 @@ function RH() {
 
     const navigate = useNavigate();
 
-    return(
+    return (
         <div>
             <Header />
-            <button onClick={ () => {navigate('/relatorios')} }>Voltar</button>           
+            <div className="backButtonContainer">
+                <button class="backButton" onClick={() => { navigate('/relatorios') }}>Voltar</button>
+            </div>
         </div>
-    )        
+    )
 }
 
 export default RH;
