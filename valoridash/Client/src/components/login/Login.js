@@ -27,7 +27,7 @@ function Login() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://192.168.45.198:3001/login', {
+        Axios.post('http://192.168.45.176:3001/login', {
             email: user.email,
             password: user.password
         }).then((response) => {
@@ -35,7 +35,7 @@ function Login() {
                 token = response.data.token;
                 department = response.data.department;
 
-                setUserToken(token);
+                setUserToken(token, true);
                 setUserDepartment(department);
 
                 localStorage.setItem('token', token);

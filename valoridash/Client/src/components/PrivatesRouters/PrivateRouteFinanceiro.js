@@ -10,6 +10,7 @@ export const PrivateRouteFinanceiro = ({ children }) => {
         return children;
     }
 
+    alert('Você não tem permissão para acessar essa área!');
     return <Navigate to="/relatorios" />
 }
 

@@ -2,7 +2,7 @@ export var userName = null;
 export var userDepartment = null;
 export var userToken = null;
 
-export default function setUserToken (token) {    
+export default function setUserToken (token, bool) {    
     if (localStorage.getItem('token')) {
         userToken = localStorage.getItem('token-ref');
     } else {
