@@ -61,6 +61,8 @@ app.post('/register', (req, res) => {
     }
 });
 
+
+
 // Método post para logar um novo usuário
 app.post('/login', (req, res) => {
     const { email } = req.body;
@@ -75,7 +77,8 @@ app.post('/login', (req, res) => {
             bcrypt.compare(password, result[0].password, (errs, results) => {
                 if (results) {
                     res.send({
-                        msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex'), department: result[0].department });
+                        msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex'), department: result[0].department
+                    });
                 } else {
                     res.send({ msg: 'wrongPassword', status: false });
                 }
@@ -85,6 +88,33 @@ app.post('/login', (req, res) => {
         }
     })
 })
+
+app.post('/registrarnoticia', (req, res) => {
+    // A requisição veio como json, então desestruturamos seu corpo para pegar os valores necessários
+    const { title } = req.body;
+    const { descrip } = req.body;
+    const { dt_creation } = req.body;
+
+
+    db.query('SELECT * FROM posts WHERE title = ?', [title], (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            if (result.length > 0) {
+                res.send({ msg: "postAlreadyRegistered" });
+            } else {
+                const SQLInsert = 'INSERT INTO posts (title, descrip, dt_creation) VALUES (?, ?, ?)';
+                db.query(SQLInsert, [title, descrip, dt_creation], (erro, results) => {
+                    if (erro) {
+                        res.send(erro);
+                    }
+                    res.send({ msg: 'newPostAdded' });
+                    console.log("Cadastro realizado com sucesso");
+                })
+            }
+        }
+    })
+});
 
 
 app.listen(3001, () => {

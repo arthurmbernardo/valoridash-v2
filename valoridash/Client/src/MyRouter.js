@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Register from './components/register/Register';
+import RegistarNoticia from './components/noticias/RegistrarNoticia';
 import PrivateRoute from './components/PrivatesRouters/PrivateRoute';
 import Atendimento from './components/relatorios/Atendimento';
 import Comercial from './components/relatorios/Comercial';
@@ -27,6 +28,8 @@ function MyRouter() {
             <Routes>
 
                 <Route path='/login' element={<Login />} />
+
+                <Route path='/registrarnoticia' element={<RegistarNoticia />} />
 
                 <Route path='/' element={
                     <PrivateRoute><Home /></PrivateRoute>
@@ -58,6 +61,10 @@ function MyRouter() {
 
                 <Route path='/relatorios/marketing' element={
                     <PrivateRoute><PrivateRouteMarketing><Marketing /></PrivateRouteMarketing></PrivateRoute>
+                } />
+
+                <Route path='/registrarnoticia' element={
+                    <PrivateRoute><PrivateRouteMarketing><RegistarNoticia /></PrivateRouteMarketing></PrivateRoute>
                 } />
 
                 <Route path='/relatorios/operacional' element={
