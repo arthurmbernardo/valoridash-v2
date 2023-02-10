@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Register from './components/register/Register';
-import RegistarNoticia from './components/noticias/RegistrarNoticia';
 import PrivateRoute from './components/PrivatesRouters/PrivateRoute';
 import Atendimento from './components/relatorios/Atendimento';
 import Comercial from './components/relatorios/Comercial';
@@ -20,6 +19,8 @@ import PrivateRouteFinanceiro from './components/PrivatesRouters/PrivateRouteFin
 import PrivateRouteMarketing from './components/PrivatesRouters/PrivateRouteMarketing';
 import PrivateRouteOperacional from './components/PrivatesRouters/PrivateRouteOperacional';
 import PrivateRouteRH from './components/PrivatesRouters/PrivateRouteRH';
+import News from './components/news/News';
+import RegisterNews from './components/news/RegisterNews';
 
 function MyRouter() {
 
@@ -29,13 +30,13 @@ function MyRouter() {
 
                 <Route path='/login' element={<Login />} />
 
-                <Route path='/registrarnoticia' element={<RegistarNoticia />} />
+                <Route path='/news' element={<News />} />
 
                 <Route path='/' element={
                     <PrivateRoute><Home /></PrivateRoute>
                 } />
 
-                <Route path='/register' element={
+                <Route path='/register/user' element={
                     <PrivateRoute><Register /></PrivateRoute>
                 } />
 
@@ -63,8 +64,8 @@ function MyRouter() {
                     <PrivateRoute><PrivateRouteMarketing><Marketing /></PrivateRouteMarketing></PrivateRoute>
                 } />
 
-                <Route path='/registrarnoticia' element={
-                    <PrivateRoute><PrivateRouteMarketing><RegistarNoticia /></PrivateRouteMarketing></PrivateRoute>
+                <Route path='/register/news' element={
+                    <PrivateRoute><PrivateRouteMarketing><RegisterNews /></PrivateRouteMarketing></PrivateRoute>
                 } />
 
                 <Route path='/relatorios/operacional' element={

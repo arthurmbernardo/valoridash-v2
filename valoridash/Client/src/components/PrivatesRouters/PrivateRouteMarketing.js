@@ -11,7 +11,7 @@ export const PrivateRouteMarketing = ({ children }) => {
     }
 
     alert('Você não tem permissão para acessar essa área!');
-    return <Navigate to="/relatorios" />
+    return <Navigate to="/" />
 }
 
 export default PrivateRouteMarketing;

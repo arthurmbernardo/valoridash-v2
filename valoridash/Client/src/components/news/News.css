@@ -1,5 +1,5 @@
 /* Classe do body da tela login */
-.post {
+.news {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -11,7 +11,7 @@
     background-size: cover;
 }
 /* div tela de login */
-.container_post {
+.container_news {
     animation: transitionIn 2s;
     width: 325px;
     color: black;
@@ -44,5 +44,26 @@ button {
     color: #4c4c4c;
     font-size: 20px;
     margin-top: 20px;
+}
+
+.addButton {
+margin-left: 20px;
+margin-bottom: 20px;
+}
+
+.newsModelContainer {
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    max-width: 75%;
+    text-align: center;
+    background-color: white;
+    border: solid;
+    border-color: white;
+    border-radius: 25px;
+}
+
+.newsModelDescrip {
+    text-justify: none;
 }
 

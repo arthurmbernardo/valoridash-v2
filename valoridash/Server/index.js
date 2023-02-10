@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 // Método post para criar um novo usuário
-app.post('/register', (req, res) => {
+app.post('/register/user', (req, res) => {
     // A requisição veio como json, então desestruturamos seu corpo para pegar os valores necessários
     const { name } = req.body;
     const { email } = req.body;
@@ -62,7 +62,6 @@ app.post('/register', (req, res) => {
 });
 
 
-
 // Método post para logar um novo usuário
 app.post('/login', (req, res) => {
     const { email } = req.body;
@@ -89,7 +88,7 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/registrarnoticia', (req, res) => {
+app.post('/register/news', (req, res) => {
     // A requisição veio como json, então desestruturamos seu corpo para pegar os valores necessários
     const { title } = req.body;
     const { descrip } = req.body;
@@ -101,19 +100,27 @@ app.post('/registrarnoticia', (req, res) => {
             res.send(err);
         } else {
             if (result.length > 0) {
-                res.send({ msg: "postAlreadyRegistered" });
+                res.send({ msg: "newsAlreadyRegistered" });
             } else {
-                const SQLInsert = 'INSERT INTO posts (title, descrip, dt_creation) VALUES (?, ?, ?)';
-                db.query(SQLInsert, [title, descrip, dt_creation], (erro, results) => {
+                db.query('INSERT INTO posts (title, descrip, dt_creation) VALUES (?, ?, ?)', [title, descrip, dt_creation], (erro, results) => {
                     if (erro) {
                         res.send(erro);
                     }
-                    res.send({ msg: 'newPostAdded' });
+                    res.send({ msg: 'newNewsAdded' });
                     console.log("Cadastro realizado com sucesso");
                 })
             }
         }
     })
+});
+
+app.get('/get/news', (req, res) => {
+    db.query('SELECT * FROM posts', (err, result) => {
+        if (err) console.log(err);
+        else {
+            res.send(result);
+        }
+    });
 });
 
 

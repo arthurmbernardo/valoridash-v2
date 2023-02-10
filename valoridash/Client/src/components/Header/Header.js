@@ -12,10 +12,10 @@ function Header() {
         <div className='header'>
             <div className="img" href='/'></div>
             <nav className='headerNav'>
-                <a href='/noticias'>Notícias</a>
+                <a href='/news'>Notícias</a>
                 <a href='/relatorios'>Relatórios</a>
-                <a href=''>Calendário</a>
-                <a href='/register'>Cadastrar usuário</a>
+                <a href='/calendario'>Calendário</a>
+                <a href='/register/user'>Cadastrar usuário</a>
             </nav>
             <a className='logoutButton' href='/login' onClick={logOut}>Sair</a>
         </div>
