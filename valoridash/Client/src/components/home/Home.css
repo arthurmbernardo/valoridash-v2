@@ -1,14 +1,49 @@
-.dashboard{
+.dashboard {
     background-color: #102C28;
     color: white;
     overflow: hidden;
     font-family: 'Urbane';
 }
 
-.texto{
+.texto {
     animation: transitionIn 2s;
-    margin-top: 120px;
+    margin-top: 64px;
     margin-bottom: 120px;
     text-align: center;
     font-family: 'UrbaneRegular';
+}
+
+.homeContainer {
+    display: flex;
+    color: black;
+}
+
+.newsContaienr {
+    width: 50%;
+}
+
+.iframeContainer {
+    width: 50%;
+}
+
+.iframeContainer iframe {
+    display: block;
+    /* iframes are inline by default */
+    height: 400px;
+    /* Set height to 100% of the viewport height */
+    width: 100%;
+    /* Set width to 100% of the viewport width */
+    border: none;
+    /* Remove default border */
+    background: lightyellow;
+    /* Just for styling */
+}
+
+#newsTitle {
+    text-align: center;
+}
+
+.visualContainerHost {
+    width: 100%;
+
 }

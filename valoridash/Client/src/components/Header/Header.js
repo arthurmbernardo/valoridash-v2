@@ -12,7 +12,7 @@ function Header() {
         <div className='header'>
             <div className="img" href='/'></div>
             <nav className='headerNav'>
-                <a href='/news'>Notícias</a>
+                <a href='/'>Home</a>
                 <a href='/relatorios'>Relatórios</a>
                 <a href='/calendario'>Calendário</a>
                 <a href='/register/user'>Cadastrar usuário</a>
