@@ -1,5 +1,5 @@
 import './Home.css'
-import Header from '../header/Header';
+// import Header from '../header/Header';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NewsModel from '../news/NewsModel';
@@ -19,7 +19,7 @@ function Home() {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className='dashboard'>
                 <div className="texto">
                     <h1 id='homeTitle'>BEM VINDO AO VALORI DASH</h1>
