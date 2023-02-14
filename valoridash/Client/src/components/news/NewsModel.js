@@ -4,9 +4,9 @@ import './News.css';
 
     return (
         <div className="newsModelContainer">
-            <h1 className="newsModelTitle">{props.title}</h1>
-            <p className="newsModelDescrip" >{props.descrip}</p>
-            <p className="newsModelDate">{props.dt_creation}</p>
+            <h1 id="newsModelTitle">{props.title}</h1>
+            <p id="newsModelDescrip" >{props.descrip}</p>
+            <p id="newsModelDate">{props.dt_creation}</p>
         </div>
     )
  }

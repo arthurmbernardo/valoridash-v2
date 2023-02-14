@@ -3,8 +3,12 @@ import { useState, React } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import  setUserToken, { setUserDepartment } from '../../userData';
+import clearStorage from '../../clearStorage';
 
 function Login() {
+
+    window.addEventListener('load', clearStorage);
+
     var token = null;
     var msg = null;
     var department = null;

@@ -10,20 +10,22 @@
     background: url(../../../public/images/background_login.jpg);
     background-size: cover;
 }
+
 /* div tela de login */
 .container_news {
     animation: transitionIn 2s;
     width: 325px;
     color: black;
     height: 600px;
-    padding:50px;
+    padding: 50px;
     margin: 0 auto;
     margin-top: 16px;
     background-color: #FFFFFF;
-    box-shadow: 0 5px 15px rgba(0,0,0,5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 5);
     border-radius: 20px;
     text-align: center;
 }
+
 /* logo na div de login */
 .form_image {
     margin-top: 15px;
@@ -34,7 +36,7 @@
     background: url(../../../public/images/logo_login.png);
     background-size: cover;
     width: 305px;
-    height: 305px;    
+    height: 305px;
 }
 
 button {
@@ -47,8 +49,8 @@ button {
 }
 
 .addButton {
-margin-left: 20px;
-margin-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .newsModelContainer {
@@ -57,8 +59,28 @@ margin-bottom: 20px;
     margin-bottom: 16px;
     max-width: 75%;
     text-align: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     border: solid;
-    border-color: white;
+    border-color: #102C28;
     border-radius: 25px;
+}
+
+#newsModelTitle {
+    font-size: 24px;
+    text-align: center;
+}
+
+#newsModelDescrip {
+    font-size: 14px;
+    text-align: justify;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    white-space: pre-line;
+    white-space: pre-wrap;
+}
+
+#newsModelDate {
+    font-size: 11px;
+    text-align: center;
 }

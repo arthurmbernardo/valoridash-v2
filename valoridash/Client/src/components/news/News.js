@@ -4,7 +4,7 @@ import NewsModel from "./NewsModel";
 import Header from '../header/Header';
 import { useNavigate } from "react-router-dom";
 
-function News () {
+function News() {
 
     const navigate = useNavigate();
 
@@ -13,10 +13,8 @@ function News () {
     useEffect(() => {
         Axios.get('http://localhost:3001/get/news').then((response) => {
             setListNews(response.data);
-        }) 
+        })
     }, [])
-
-    console.log(listNews);
 
     return (
         <div>
@@ -24,14 +22,11 @@ function News () {
             <button class="addButton" onClick={() => { navigate('/register/news') }}>Cadastar notícia</button>
             {Array.from(listNews).map((news, index) => {
                 return <NewsModel
-                id={listNews[index].id}
-                title={listNews[index].title}
-                descrip={listNews[index].descrip}
-                dt_creation={listNews[index].dt_creation}></NewsModel>
+                    id={listNews[index].id}
+                    title={listNews[index].title}
+                    descrip={listNews[index].descrip}
+                    dt_creation={listNews[index].dt_creation}></NewsModel>
             })}
-          
-            
-            
         </div>
     )
 }

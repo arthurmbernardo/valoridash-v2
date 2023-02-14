@@ -27,11 +27,13 @@
 }
 
 .iframeContainer iframe {
+    text-align: center;
+
     display: block;
     /* iframes are inline by default */
     height: 400px;
     /* Set height to 100% of the viewport height */
-    width: 100%;
+    width: 97%;
     /* Set width to 100% of the viewport width */
     border: none;
     /* Remove default border */
@@ -39,8 +41,22 @@
     /* Just for styling */
 }
 
+#homeTitle {
+    font-size: 44px;
+}
+
 #newsTitle {
+    font-size: 36px;
+    font-family: 'UrbaneRegular';
     text-align: center;
+    color: white;
+}
+
+#iframeContainerTitle {
+    font-size: 36px;
+    font-family: 'UrbaneRegular';
+    text-align: center;
+    color: white;
 }
 
 .visualContainerHost {

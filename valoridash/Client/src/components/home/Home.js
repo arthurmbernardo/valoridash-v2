@@ -3,8 +3,11 @@ import Header from '../header/Header';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NewsModel from '../news/NewsModel';
+import clearStorage from '../../clearStorage';
 
 function Home() {
+
+    window.addEventListener('load', clearStorage);
 
     const [listNews, setListNews] = useState('');
 
@@ -19,7 +22,7 @@ function Home() {
             <Header />
             <div className='dashboard'>
                 <div className="texto">
-                    <h1>BEM VINDO AO VALORI DASH</h1>
+                    <h1 id='homeTitle'>BEM VINDO AO VALORI DASH</h1>
                 </div>
                 <div className='homeContainer'>
                     <div className='newsContaienr'>
@@ -33,7 +36,7 @@ function Home() {
                         })}
                     </div>
                     <div className='iframeContainer'>
-                        <h1>Indicador Geral</h1>
+                        <h1 id='iframeContainerTitle'>Indicador Geral</h1>
                         <iframe title="PPV ATENDIMENTO" src="https://app.powerbi.com/reportEmbed?reportId=1a85635c-b5ed-4196-ac46-800fa68d946b&autoAuth=true&ctid=0a42edab-afcd-48af-a0b9-5b78edb164da" frameBorder='0' allowFullScreen></iframe>
                     </div>
                 </div>
