@@ -20,7 +20,7 @@ app.use(cors());
 // Usado para transformar a requisição para formato json. Sem isso, a requisição é enviada para o servidor mas não conseguimos tirar as informações dela
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname + "/public")));
+app.use(express.static(path.join(__dirname + "../Client/build")));
 
 // Método post para criar um novo usuário
 app.post('/register/user', (req, res) => {
