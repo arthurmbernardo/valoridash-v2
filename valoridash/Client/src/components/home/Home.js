@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NewsModel from '../news/NewsModel';
 import clearStorage from '../../clearStorage';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
     window.addEventListener('load', clearStorage);
+
+    const navigate = useNavigate();
 
     const [listNews, setListNews] = useState('');
 
@@ -28,12 +31,17 @@ function Home() {
                     <div className='newsContaienr'>
                         <h1 id='newsTitle'>Notícias</h1>
                         {Array.from(listNews).map((news, index) => {
-                            return <NewsModel
-                                id={listNews[index].id}
-                                title={listNews[index].title}
-                                descrip={listNews[index].descrip}
-                                dt_creation={listNews[index].dt_creation}></NewsModel>
+                            if (index <= 6) {
+                                console.log(index)
+                                return <NewsModel
+                                    id={listNews[index].id}
+                                    title={listNews[index].title}
+                                    descrip={listNews[index].descrip}
+                                    dt_creation={listNews[index].dt_creation}></NewsModel>
+                            }
+
                         })}
+                        <button onClick={() => { navigate('/news') }}>Mais notícias</button>
                     </div>
                     <div className='iframeContainer'>
                         <h1 id='iframeContainerTitle'>Indicador Geral</h1>
