@@ -12,10 +12,10 @@ function Header() {
         <div className='header'>
             <div className="img" href='/'></div>
             <nav className='headerNav'>
-                <a href='/'>Home</a>
-                <a href='/relatorios'>Relatórios</a>
-                <a href='/calendario'>Calendário</a>
-                <a href='/register/user'>Cadastrar usuário</a>
+                <a onClick={() => {navigate('/')}}>Home</a>
+                <a onClick={() => {navigate('/relatorios')}}>Relatórios</a>
+                <a onClick={() => {navigate('/calendario')}}>Calendário</a>
+                <a onClick={() => {navigate('/register/user')}}>Cadastrar usuário</a>
             </nav>
             <a className='logoutButton' href='/login' onClick={logOut}>Sair</a>
         </div>
