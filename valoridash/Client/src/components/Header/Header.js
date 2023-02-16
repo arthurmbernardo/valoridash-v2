@@ -6,6 +6,7 @@ function Header() {
     const navigate = useNavigate();
     const logOut = () => {
         localStorage.clear();
+        navigate('/login');
     }
 
     return (
@@ -17,7 +18,7 @@ function Header() {
                 <a onClick={() => {navigate('/calendario')}}>Calendário</a>
                 <a onClick={() => {navigate('/register/user')}}>Cadastrar usuário</a>
             </nav>
-            <a className='logoutButton' href='/login' onClick={logOut}>Sair</a>
+            <a className='logoutButton' onClick={logOut}>Sair</a>
         </div>
     )
 }
