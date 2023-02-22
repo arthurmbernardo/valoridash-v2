@@ -126,7 +126,7 @@ app.get('/get/news', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 app.listen(PORT, () => {
     console.log(`Rodando o server na porta ${PORT}`);
