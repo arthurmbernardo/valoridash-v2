@@ -9,9 +9,9 @@ const path = require('path');
 
 // Conexão com o banco de dados
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "password",
+    host: "valoridashdb.cq4fcvhagu1i.us-east-1.rds.amazonaws.com",
+    user: "admin",
+    password: "29042019",
     database: "valoridashdb"
 });
 
