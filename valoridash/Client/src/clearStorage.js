@@ -5,6 +5,8 @@ function clearStorage() {
         localStorage.removeItem('token-ref');
         localStorage.removeItem('department');
         localStorage.removeItem('department-ref');
+        localStorage.removeItem('name');
+        localStorage.removeItem('name-ref');
     }
     sessionStorage.setItem('token', 1);
 }

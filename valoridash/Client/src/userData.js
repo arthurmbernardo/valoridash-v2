@@ -22,4 +22,14 @@ export function setUserDepartment (department) {
     localStorage.setItem('department-ref', userDepartment);
 }
 
+export function setUserName (name) {
+    if (localStorage.getItem('name')) {
+        userName = localStorage.getItem('name-ref');
+    } else {
+        userName = name;
+    }
+
+    localStorage.setItem('name-ref', userName);
+}
+
 
