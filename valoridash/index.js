@@ -7,12 +7,14 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const path = require('path');
 
+require("dotenv").config();
+
 // Conexão com o banco de dados
 const db = mysql.createPool({
-    host: "valoridashdb.cq4fcvhagu1i.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "29042019",
-    database: "valoridashdb"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Política de cors
@@ -64,7 +66,6 @@ app.post('/register/user', (req, res) => {
     }
 });
 
-
 // Método post para logar um novo usuário
 app.post('/login', (req, res) => {
     const { email } = req.body;
@@ -91,6 +92,7 @@ app.post('/login', (req, res) => {
     })
 })
 
+// Método post para resitrar novas notícias
 app.post('/register/news', (req, res) => {
     // A requisição veio como json, então desestruturamos seu corpo para pegar os valores necessários
     const { title } = req.body;
@@ -117,6 +119,7 @@ app.post('/register/news', (req, res) => {
     })
 });
 
+// Método get para exibir as notícias 
 app.get('/get/news', (req, res) => {
     db.query('SELECT * FROM posts', (err, result) => {
         if (err) console.log(err);
@@ -127,7 +130,6 @@ app.get('/get/news', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-
 app.listen(PORT, () => {
     console.log(`Rodando o server na porta ${PORT}`);
 });
