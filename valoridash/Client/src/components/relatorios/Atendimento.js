@@ -12,10 +12,10 @@ function Atendimento() {
             <div className="backButtonContainer">
             <button class="backButton" onClick={() => { navigate('/relatorios') }}>Voltar</button>
             </div>
-
+            <br />
+            <h1>PPV Atendimento</h1>
             <div id="visibleIframeContainer">
-                <h1>PPV Atendimento</h1>
-                <iframe title="PPV ATENDIMENTO" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=1a85635c-b5ed-4196-ac46-800fa68d946b&autoAuth=true&ctid=0a42edab-afcd-48af-a0b9-5b78edb164da" frameBorder='0' allowFullScreen></iframe>
+                <iframe title="PPV ATENDIMENTO" width="1140" height="541.25" src={process.env.REACT_APP_RELATORIO_PPV_ATENDIMENTO} frameBorder='0' allowFullScreen></iframe>
             </div>
         </div>
     )
