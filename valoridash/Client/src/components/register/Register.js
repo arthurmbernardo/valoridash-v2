@@ -26,7 +26,7 @@ function Register() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://localhost:3001/register/user', {
+        Axios.post(process.env.REACT_APP_CLIENT_REGISTER, {
             email: user.email,
             password: user.password,
             name: user.name,

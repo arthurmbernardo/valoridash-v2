@@ -31,7 +31,7 @@ function Login() {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://localhost:3001/login', {
+        Axios.post(process.env.REACT_APP_CLIENT_LOGIN, {
             email: user.email,
             password: user.password
         }).then((response) => {
