@@ -44,8 +44,8 @@ function Home() {
                         <button onClick={() => { navigate('/news') }}>Mais notícias</button>
                     </div>
                     <div className='iframeContainer'>
-                        <h1 id='iframeContainerTitle'>Indicador Geral</h1>
-                        <iframe title="PPV ATENDIMENTO" src="https://app.powerbi.com/reportEmbed?reportId=1a85635c-b5ed-4196-ac46-800fa68d946b&autoAuth=true&ctid=0a42edab-afcd-48af-a0b9-5b78edb164da" frameBorder='0' allowFullScreen></iframe>
+                        <h1 id='iframeContainerTitle'>Volumetria Macro</h1>
+                        <iframe title="Volumetria Macro_V3_parcial" width="1140" height="541.25" src={process.env.REACT_APP_RELATORIO_VOLUMETRIA_MACRO} frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                 </div>
 
