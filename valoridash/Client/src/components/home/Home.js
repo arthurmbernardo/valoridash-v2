@@ -15,7 +15,7 @@ function Home() {
     const [listNews, setListNews] = useState('');
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/get/news').then((response) => {
+        Axios.get('http://127.0.0.1:3001/get/news').then((response) => {
             setListNews(response.data);
         })
     }, [])
