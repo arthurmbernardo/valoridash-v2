@@ -9,10 +9,6 @@ const path = require('path');
 
 app.use(cors());
 
-app.listen(80, function () {
-    console.log('CORS-enabled web server listening on port 80')
-  })
-
 require("dotenv").config();
 
 // Conexão com o banco de dados
