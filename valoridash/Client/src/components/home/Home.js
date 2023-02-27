@@ -32,7 +32,6 @@ function Home() {
                         <h1 id='newsTitle'>Notícias</h1>
                         {Array.from(listNews).map((news, index) => {
                             if (index <= 6) {
-                                console.log(index)
                                 return <NewsModel
                                     id={listNews[index].id}
                                     title={listNews[index].title}
