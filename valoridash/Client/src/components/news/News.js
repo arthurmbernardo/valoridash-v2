@@ -11,7 +11,7 @@ function News() {
     const [listNews, setListNews] = useState('');
 
     useEffect(() => {
-        Axios.get('http://127.0.0.1:3001/get/news').then((response) => {
+        Axios.get(process.env.REACT_APP_CLIENT_NEWS).then((response) => {
             setListNews(response.data);
         })
     }, [])
