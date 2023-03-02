@@ -56,7 +56,7 @@ function Register() {
                     <select name="department" value={user.department} onChange={handleInput} >
                         <option value="atendimento">Atendimento</option>
                         <option value="comercial">Comercial</option>
-                        <option value="estrategia_e_produtos">Estratégia e Produtos</option>
+                        <option value="estrategiaeprodutos">Estratégia e Produtos</option>
                         <option value="financeiro">Financeiro</option>
                         <option value="marketing">Marketing</option>
                         <option value="operacional">Operacional</option>
