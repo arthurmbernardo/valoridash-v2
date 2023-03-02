@@ -30,10 +30,12 @@ function MyRouter() {
 
                 <Route path='/login' element={<Login />} />
 
-                <Route path='/news' element={<News />} />
-
                 <Route path='/' element={
                     <PrivateRoute><Home /></PrivateRoute>
+                } />
+
+                <Route path='/news' element={
+                    <PrivateRoute><News /></PrivateRoute>
                 } />
 
                 <Route path='/register/user' element={
