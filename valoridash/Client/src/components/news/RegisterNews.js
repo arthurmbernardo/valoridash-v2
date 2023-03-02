@@ -25,7 +25,7 @@ function RegisterNews () {
     const navigate = useNavigate();
     const handleSubmit = () => {
         // Envia uma requisição para a url com os dados do user
-        Axios.post('http://localhost:3001/register/news', {
+        Axios.post(process.env.REACT_APP_CLIENT_REGISTER_NEWS, {
             title: news.title,
             descrip: news.descrip,
             dt_creation: news.dt_creation
