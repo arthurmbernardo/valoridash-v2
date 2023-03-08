@@ -35,7 +35,7 @@ function Home() {
                                 return <NewsModel
                                     id={listNews[index].id}
                                     title={listNews[index].title}
-                                    descrip={listNews[index].descrip}
+                                    content={listNews[index].content}
                                     dt_creation={listNews[index].dt_creation}></NewsModel>
                             }
 
