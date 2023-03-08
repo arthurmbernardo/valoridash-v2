@@ -30,7 +30,7 @@ function RegisterNews () {
         // Envia uma requisição para a url com os dados do user
         Axios.post(process.env.REACT_APP_CLIENT_REGISTER_NEWS, {
             title: news.title,
-            content: news.descrip,
+            content: news.content,
             dt_creation: news.dt_creation,
             author: news.author
         }).then((response) => {
@@ -50,7 +50,7 @@ function RegisterNews () {
                 <form method='news' onSubmit={preventSubmit}>
                     <p>Nome:</p>
                     <input type="text" name="title" placeholder="Título" value={news.title} onChange={handleInput} required />
-                    <p>Descrição:</p>
+                    <p>Conteúdo:</p>
                     <textarea required rows="15" cols="40" name="content" value={news.content} onChange={handleInput}>Escreva o news aqui</textarea>
                     <p>Data:</p>
                     <input type="date" name="dt_creation" placeholder="Data" value={news.dt_creation} onChange={handleInput} required />
