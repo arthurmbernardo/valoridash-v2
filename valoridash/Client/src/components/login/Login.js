@@ -12,6 +12,7 @@ function Login() {
     var token = null;
     var msg = null;
     var department = null;
+    var userName = null;
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         email: "",
