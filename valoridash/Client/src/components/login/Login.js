@@ -17,6 +17,7 @@ function Login() {
         email: "",
         password: "",
         department: "",
+        userName: ""
     });
 
     // Função que lida com os dados do input "...user" mantém o estado inicial "[e.target.name]:e.target.value" procura o atributo com o mesmo nome do input e troca o valor
@@ -38,7 +39,7 @@ function Login() {
             if (response.data.status === true) {
                 token = response.data.token;
                 department = response.data.department;
-                const userName = response.data.name;
+                userName = response.data.userName;
 
                 setUserToken(token, true);
                 setUserDepartment(department);
