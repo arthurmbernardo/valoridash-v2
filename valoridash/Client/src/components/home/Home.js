@@ -36,9 +36,9 @@ function Home() {
                                     id={listNews[index].id}
                                     title={listNews[index].title}
                                     content={listNews[index].content}
-                                    dt_creation={listNews[index].dt_creation}></NewsModel>
+                                    dt_creation={listNews[index].dt_creation}
+                                    author={listNews[index].author}></NewsModel>
                             }
-
                         })}
                         <button onClick={() => { navigate('/news') }}>Mais notícias</button>
                     </div>
