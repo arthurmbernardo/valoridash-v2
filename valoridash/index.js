@@ -82,7 +82,7 @@ app.post('/login', (req, res) => {
             bcrypt.compare(password, result[0].password, (errs, results) => {
                 if (results) {
                     res.send({
-                        msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex'), department: result[0].department, name: result[0].name
+                        msg: "Usuário logado com sucesso", status: true, token: crypto.randomBytes(20).toString('hex'), department: result[0].department, userName: result[0].name
                     });
                 } else {
                     res.send({ msg: 'wrongPassword', status: false });
@@ -98,32 +98,28 @@ app.post('/login', (req, res) => {
 app.post('/register/news', (req, res) => {
     // A requisição veio como json, então desestruturamos seu corpo para pegar os valores necessários
     const { title } = req.body;
-    const { descrip } = req.body;
+    const { content } = req.body;
     const { dt_creation } = req.body;
+    const { author } = req.body;
 
-
-    db.query('SELECT * FROM posts WHERE title = ?', [title], (err, result) => {
-        if (err) {
-            res.send(err);
-        } else {
-            if (result.length > 0) {
-                res.send({ msg: "newsAlreadyRegistered" });
-            } else {
-                db.query('INSERT INTO posts (title, descrip, dt_creation) VALUES (?, ?, ?)', [title, descrip, dt_creation], (erro, results) => {
-                    if (erro) {
-                        res.send(erro);
-                    }
-                    res.send({ msg: 'newNewsAdded' });
-                    console.log("Cadastro realizado com sucesso");
-                })
+    if (err) {
+        res.send(err);
+    } else {
+        db.query('INSERT INTO news (title, content, dt_creation, author) VALUES (?, ?, ?, ?)', [title, content, dt_creation, author], (erro, results) => {
+            if (erro) {
+                res.send(erro);
             }
-        }
-    })
+            res.send({ msg: 'newNewsAdded' });
+            console.log("Cadastro realizado com sucesso");
+        })
+
+    }
+
 });
 
 // Método get para exibir as notícias 
 app.get('/get/news', (req, res) => {
-    db.query('SELECT * FROM posts', (err, result) => {
+    db.query('SELECT * FROM news', (err, result) => {
         if (err) console.log(err);
         else {
             res.send(result);

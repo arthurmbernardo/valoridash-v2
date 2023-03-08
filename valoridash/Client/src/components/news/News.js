@@ -25,7 +25,8 @@ function News() {
                     id={listNews[index].id}
                     title={listNews[index].title}
                     descrip={listNews[index].descrip}
-                    dt_creation={listNews[index].dt_creation}></NewsModel>
+                    dt_creation={listNews[index].dt_creation}
+                    author={listNews[index].author}></NewsModel>
             })}
         </div>
     )

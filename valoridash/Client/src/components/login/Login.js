@@ -38,12 +38,14 @@ function Login() {
             if (response.data.status === true) {
                 token = response.data.token;
                 department = response.data.department;
+                const userName = response.data.name;
 
                 setUserToken(token, true);
                 setUserDepartment(department);
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('department', department);
+                localStorage.setItem('userName', userName);
 
                 alert('Login realizado com sucesso!');
                 navigate('/');

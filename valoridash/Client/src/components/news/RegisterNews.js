@@ -10,8 +10,9 @@ function RegisterNews () {
     // Objeto usuário, com um estado e um setEstado
     const [news, setNews] = useState({
         title: "",
-        descrip: "",
+        content: "",
         dt_creation: "",
+        author: ""
     });
 
     const preventSubmit = (e) => {
@@ -24,11 +25,14 @@ function RegisterNews () {
 
     const navigate = useNavigate();
     const handleSubmit = () => {
+        author = localStorage.getItem('name');
+        
         // Envia uma requisição para a url com os dados do user
         Axios.post(process.env.REACT_APP_CLIENT_REGISTER_NEWS, {
             title: news.title,
-            descrip: news.descrip,
-            dt_creation: news.dt_creation
+            content: news.descrip,
+            dt_creation: news.dt_creation,
+            author: news.author
         }).then((response) => {
             msg = response.data.msg;
             if (msg === 'newsAlreadyRegistered') alert('Notícia já está registrada.');
@@ -47,7 +51,7 @@ function RegisterNews () {
                     <p>Nome:</p>
                     <input type="text" name="title" placeholder="Título" value={news.title} onChange={handleInput} required />
                     <p>Descrição:</p>
-                    <textarea required rows="15" cols="40" name="descrip" value={news.descrip} onChange={handleInput}>Escreva o news aqui</textarea>
+                    <textarea required rows="15" cols="40" name="descrip" value={news.content} onChange={handleInput}>Escreva o news aqui</textarea>
                     <p>Data:</p>
                     <input type="date" name="dt_creation" placeholder="Data" value={news.dt_creation} onChange={handleInput} required />
                     <br /><br />
