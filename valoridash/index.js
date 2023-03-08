@@ -112,9 +112,7 @@ app.post('/register/news', (req, res) => {
             res.send({ msg: 'newNewsAdded' });
             console.log("Cadastro realizado com sucesso");
         })
-
     }
-
 });
 
 // Método get para exibir as notícias 

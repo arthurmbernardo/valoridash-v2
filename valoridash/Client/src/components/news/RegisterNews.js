@@ -25,7 +25,7 @@ function RegisterNews () {
 
     const navigate = useNavigate();
     const handleSubmit = () => {
-        news.author = localStorage.getItem('name');
+        news.author = localStorage.getItem('userName');
         
         // Envia uma requisição para a url com os dados do user
         Axios.post(process.env.REACT_APP_CLIENT_REGISTER_NEWS, {
