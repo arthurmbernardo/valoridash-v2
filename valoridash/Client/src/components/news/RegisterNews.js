@@ -51,7 +51,7 @@ function RegisterNews () {
                     <p>Nome:</p>
                     <input type="text" name="title" placeholder="Título" value={news.title} onChange={handleInput} required />
                     <p>Descrição:</p>
-                    <textarea required rows="15" cols="40" name="descrip" value={news.content} onChange={handleInput}>Escreva o news aqui</textarea>
+                    <textarea required rows="15" cols="40" name="content" value={news.content} onChange={handleInput}>Escreva o news aqui</textarea>
                     <p>Data:</p>
                     <input type="date" name="dt_creation" placeholder="Data" value={news.dt_creation} onChange={handleInput} required />
                     <br /><br />
