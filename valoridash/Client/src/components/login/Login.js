@@ -13,12 +13,14 @@ function Login() {
     var msg = null;
     var department = null;
     var userName = null;
+    
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         email: "",
         password: "",
         department: "",
-        userName: ""
+        userName: "",
+        dt_nasc: ""
     });
 
     // Função que lida com os dados do input "...user" mantém o estado inicial "[e.target.name]:e.target.value" procura o atributo com o mesmo nome do input e troca o valor

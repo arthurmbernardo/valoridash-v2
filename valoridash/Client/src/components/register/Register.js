@@ -13,6 +13,7 @@ function Register() {
         email: "",
         password: "",
         department: "",
+        dt_nasc: ""
     });
     
     const preventSubmit = (e) => {
@@ -30,7 +31,8 @@ function Register() {
             email: user.email,
             password: user.password,
             name: user.name,
-            department: user.department
+            department: user.department,
+            dt_nasc: user.dt_nasc
         }).then((response) => {
             msg = response.data.msg;
             if (msg === 'invalidEmail') alert('E-mail inválido. Por favor insira um valor válido.');
@@ -52,6 +54,8 @@ function Register() {
                     <input type="text" name="name" placeholder="Nome" value={user.name} onChange={handleInput} required />
                     <p>E-mail:</p>
                     <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
+                    <p>Data de nascimento:</p>
+                    <input type="date" name="dt_nasc" placeholder="Data" value={user.dt_nasc} onChange={handleInput} required />
                     <p>Departamento:</p>
                     <select name="department" value={user.department} onChange={handleInput} >
                         <option value="atendimento">Atendimento</option>

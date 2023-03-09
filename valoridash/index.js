@@ -33,6 +33,7 @@ app.post('/register/user', (req, res) => {
     const { email } = req.body;
     const { password } = req.body;
     const { department } = req.body;
+    const { dt_nasc } = req.body;
 
     if (!name) {
         res.send({ msg: "nameInvalid" });
@@ -51,7 +52,7 @@ app.post('/register/user', (req, res) => {
                             res.send({ msg: "userAlreadyRegistered" });
                         } else {
                             bcrypt.hash(password, saltRounds, (errs, hash) => {
-                                db.query(SQLInsert, [name, email, department, hash], (erro, results) => {
+                                db.query(SQLInsert, [name, email, department, dt_nasc, hash], (erro, results) => {
                                     if (erro) {
                                         res.send(erro);
                                     }
