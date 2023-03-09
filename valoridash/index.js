@@ -102,17 +102,24 @@ app.post('/register/news', (req, res) => {
     const { dt_creation } = req.body;
     const { author } = req.body;
 
-    if (err) {
-        res.send(err);
-    } else {
-        db.query('INSERT INTO news (title, content, dt_creation, author) VALUES (?, ?, ?, ?)', [title, content, dt_creation, author], (erro, results) => {
-            if (erro) {
-                res.send(erro);
+    db.query('SELECT * FROM news WHERE title = ?', [title], (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            if (result.length > 0) {
+                res.send({ msg: "newsAlreadyRegistered" });
+            } else {
+                db.query('INSERT INTO news (title, content, dt_creation, author) VALUES (?, ?, ?, ?)', [title, content, dt_creation, author], (erro, results) => {
+                    if (erro) {
+                        res.send(erro);
+                    }
+                    res.send({ msg: 'newNewsAdded' });
+                    console.log("Cadastro realizado com sucesso");
+                })
             }
-            res.send({ msg: 'newNewsAdded' });
-            console.log("Cadastro realizado com sucesso");
-        })
-    }
+        }
+    })
+
 });
 
 // Método get para exibir as notícias 
