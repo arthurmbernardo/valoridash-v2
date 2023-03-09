@@ -7,8 +7,6 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const path = require('path');
 
-app.use(cors());
-
 require("dotenv").config();
 
 // Conexão com o banco de dados
@@ -19,7 +17,9 @@ const db = mysql.createPool({
     database: process.env.DB_NAME
 });
 
+
 // Política de cors
+app.use(cors());
 
 // Usado para transformar a requisição para formato json. Sem isso, a requisição é enviada para o servidor mas não conseguimos tirar as informações dela
 app.use(express.json());
