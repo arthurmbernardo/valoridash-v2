@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import  setUserToken, { setUserDepartment } from '../../userData';
 import clearStorage from '../../clearStorage';
+import loginLogo from '../../images/loginLogo.png';
 
 function Login() {
 
@@ -62,9 +63,10 @@ function Login() {
     };
 
     return (
-        <div className="login">
-            <div className="container_login">
-                <h2>BEM VINDO AO VALORI DASH</h2>
+        <div id="loginMain">
+            {/* Aqui valoridash */}
+            <img src={loginLogo}/>
+            <div id="loginFormContainer">
                 <form method="post" onSubmit={preventSubmit}>
                     <p>E-mail:</p>
                     <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
@@ -73,7 +75,10 @@ function Login() {
                     <br /><br />
                     <button onClick={handleSubmit}>Entrar</button>
                 </form>
-                <div className="form_image" />
+            </div>
+            <div id='loginFooter'>
+                <p>Cria uma conta</p>
+                <p>Política de privacidade</p>
             </div>
         </div>
     )
