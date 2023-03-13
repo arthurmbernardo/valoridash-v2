@@ -15,7 +15,7 @@ function Header() {
             <nav className='headerNav'>
                 <a onClick={() => {navigate('/')}}>Home</a>
                 <a onClick={() => {navigate('/relatorios')}}>Relatórios</a>
-                <a onClick={() => {navigate('/calendario')}}>Calendário</a>
+                <a onClick={() => {navigate('/calendar')}}>Calendário</a>
                 <a onClick={() => {navigate('/register/user')}}>Cadastrar usuário</a>
             </nav>
             <a className='logoutButton' onClick={logOut}>Sair</a>

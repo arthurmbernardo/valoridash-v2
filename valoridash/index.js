@@ -133,6 +133,15 @@ app.get('/get/news', (req, res) => {
     });
 });
 
+app.get('/get/birthdays', (req, res) => {
+    db.query('SELECT name, dt_nasc FROM users', (err, result) => {
+        if (err) console.log(err);
+        else {
+            res.send(result);
+        }
+    })
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Rodando o server na porta ${PORT}`);

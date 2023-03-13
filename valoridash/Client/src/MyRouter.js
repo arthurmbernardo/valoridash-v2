@@ -21,12 +21,15 @@ import PrivateRouteOperacional from './components/PrivatesRouters/PrivateRouteOp
 import PrivateRouteRH from './components/PrivatesRouters/PrivateRouteRH';
 import News from './components/news/News';
 import RegisterNews from './components/news/RegisterNews';
+import Calendar from './components/calendar/Calendar';
 
 function MyRouter() {
 
     return (
         <BrowserRouter>
             <Routes>
+
+                <Route path='/calendar' element={<Calendar />} />
 
                 <Route path='/login' element={<Login />} />
 
