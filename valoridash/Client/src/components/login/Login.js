@@ -2,9 +2,10 @@ import './Login.css';
 import { useState, React } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import  setUserToken, { setUserDepartment } from '../../userData';
+import setUserToken, { setUserDepartment } from '../../userData';
 import clearStorage from '../../clearStorage';
 import loginLogo from '../../images/loginLogo.png';
+import user_icon from '../../images/user.png'
 
 function Login() {
 
@@ -14,7 +15,7 @@ function Login() {
     var msg = null;
     var department = null;
     var userName = null;
-    
+
     // Objeto usuário, com um estado e um setEstado
     const [user, setUser] = useState({
         email: "",
@@ -65,14 +66,19 @@ function Login() {
     return (
         <div id="loginMain">
             {/* Aqui valoridash */}
-            <img src={loginLogo}/>
+            <img src={loginLogo} id='login_logo' />
             <div id="loginFormContainer">
                 <form method="post" onSubmit={preventSubmit} id="textbox" >
-                    <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
+
+                    <div id='icon_container'>
+                        <img src={user_icon} id='user_icon_img' />
+                        <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
+                    </div>
+
                     <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
                     <br /><br />
                     <button onClick={handleSubmit}>Entrar</button>
-                    
+
                 </form>
             </div>
             <div id='loginFooter'>

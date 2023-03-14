@@ -11,12 +11,12 @@ body, #root {
     background-repeat: no-repeat;
     background-size: cover;
 }
-#loginMain img{
+#login_logo {
     position: relative;
     left: 20%;
     top:10%;
 }
-#loginFormContainer{
+#loginFormContainer {
     width: 280px;
     position: absolute;
     top: 50%;
@@ -24,7 +24,19 @@ body, #root {
     transform: translate(-50%,-50%);
     color: white;
 }
-#textbox{
+
+#icon_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#user_icon_img {
+    height: 16px;
+    width: 16px;
+}
+
+#textbox {
     width: 100%;
     overflow: hidden;
     font-size: 15px;
@@ -106,3 +118,5 @@ body, #root {
     width: 305px;
     height: 305px;    
 }
+
+
