@@ -67,18 +67,18 @@ function Login() {
             {/* Aqui valoridash */}
             <img src={loginLogo}/>
             <div id="loginFormContainer">
-                <form method="post" onSubmit={preventSubmit}>
-                    <p>E-mail:</p>
+                <form method="post" onSubmit={preventSubmit} id="textbox" >
                     <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
-                    <p>Senha:</p>
                     <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
                     <br /><br />
                     <button onClick={handleSubmit}>Entrar</button>
+                    
                 </form>
             </div>
             <div id='loginFooter'>
-                <p>Cria uma conta</p>
-                <p>Política de privacidade</p>
+                <a>Cria uma conta</a>
+                <br></br>
+                <a>Política de privacidade</a>
             </div>
         </div>
     )
