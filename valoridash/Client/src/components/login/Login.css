@@ -1,5 +1,6 @@
 /* Classe do body da tela login */
-body, #root {
+body,
+#root {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -11,17 +12,19 @@ body, #root {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 #login_logo {
     position: relative;
     left: 20%;
-    top:10%;
+    top: 10%;
 }
+
 #loginFormContainer {
     width: 280px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: white;
 }
 
@@ -35,10 +38,12 @@ body, #root {
     height: 16px;
     width: 16px;
 }
+
 #lock_icon_img {
     height: 16px;
     width: 16px;
 }
+
 #textbox {
     width: 100%;
     overflow: hidden;
@@ -46,9 +51,10 @@ body, #root {
     padding: 8px 0;
     margin: 8px 0;
 }
-#textbox input{
+
+#textbox input {
     font-family: 'Urbane';
-    color:white;
+    color: white;
     width: 100%;
     padding: 10px;
     border: none;
@@ -57,10 +63,10 @@ body, #root {
     border-bottom: 1px solid white;
 }
 
-#textbox button{
+#textbox button {
     width: 100%;
     height: 30px;
-    color:white;
+    color: white;
     font-size: 15px;
     border-radius: 20px;
     background-color: #f4a333;
@@ -68,17 +74,20 @@ body, #root {
 }
 
 
-#loginFooter{
+#loginFooter {
     display: flex;
+    width: 100%;
     text-align: center;
-    margin: 0 auto;
     cursor: pointer;
-    width: 250px;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     font-size: 10px;
-    color:lightgray;
+    color: lightgray;
     position: absolute;
-    top: 60%;
-    translate: (-50%,-50%);
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#loginFooter a {
+    margin-left: 25px;
+    margin-right: 10px;
 }
