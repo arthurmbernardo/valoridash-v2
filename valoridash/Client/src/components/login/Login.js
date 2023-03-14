@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import setUserToken, { setUserDepartment } from '../../userData';
 import clearStorage from '../../clearStorage';
 import loginLogo from '../../images/loginLogo.png';
-import user_icon from '../../images/user.png'
+import user_icon from '../../images/user.png';
+import lock_icon from '../../images/lock.png';
 
 function Login() {
 
@@ -74,8 +75,10 @@ function Login() {
                         <img src={user_icon} id='user_icon_img' />
                         <input type="email" name="email" placeholder="E-mail" value={user.email} onChange={handleInput} required />
                     </div>
-
-                    <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
+                    <div id='icon_container'>
+                        <img src={lock_icon} id='lock_icon_img' />
+                        <input type="password" name="password" placeholder="Senha" value={user.password} onChange={handleInput} required />
+                    </div>
                     <br /><br />
                     <button onClick={handleSubmit}>Entrar</button>
 
